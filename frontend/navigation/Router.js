@@ -4,11 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
 import PropertyItem from '../components/propertyItem';
+import MainPage from '../screens/MainPage';
 
 const routes = [
   {
     name: 'Home',
-    component: () => <PropertyItem type={'cellular'} />,
+    component: () => <MainPage/>,
     props: {},
   },
   {
