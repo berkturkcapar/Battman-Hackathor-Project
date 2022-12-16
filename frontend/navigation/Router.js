@@ -1,18 +1,18 @@
-import React from "react";
-import { Text } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import "react-native-gesture-handler";
-import PropertyItem from "../components/propertyItem";
+import React from 'react';
+import { Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import 'react-native-gesture-handler';
+import PropertyItem from '../components/propertyItem';
 
 const routes = [
   {
-    name: "Home",
-    component: () => <PropertyItem isSlider={true} />,
+    name: 'Home',
+    component: () => <PropertyItem type={'cellular'} />,
     props: {},
   },
   {
-    name: "Battery",
+    name: 'Battery',
     component: () => (
       <Text>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae modi
@@ -36,23 +36,23 @@ export default function Router() {
             name={route.name}
             component={route.component}
             options={{
-              drawerActiveBackgroundColor: "#555",
-              drawerActiveTintColor: "#0f0",
+              drawerActiveBackgroundColor: '#555',
+              drawerActiveTintColor: '#0f0',
               drawerContentStyle: {
-                backgroundColor: "#000",
+                backgroundColor: '#000',
               },
               drawerLabelStyle: {
                 fontSize: 20,
               },
-              drawerInactiveTintColor: "#fff",
-              drawerType: "slide",
-              drawerStatusBarAnimation: "slide",
+              drawerInactiveTintColor: '#fff',
+              drawerType: 'slide',
+              drawerStatusBarAnimation: 'slide',
               headerStyle: {
-                backgroundColor: "#000",
+                backgroundColor: '#000',
               },
-              headerTintColor: "#fff",
+              headerTintColor: '#fff',
               sceneContainerStyle: {
-                backgroundColor: "#000",
+                backgroundColor: '#000',
               },
               headerTitle: () => null,
             }}
