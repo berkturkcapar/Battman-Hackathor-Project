@@ -3,20 +3,12 @@ import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import "react-native-gesture-handler";
+import PropertyItem from "../components/propertyItem";
 
 const routes = [
   {
     name: "Home",
-    component: () => (
-      <Text>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis eos
-        itaque aliquam. Et vero excepturi nesciunt debitis, fugiat distinctio
-        iusto illum aliquam, a quae incidunt id necessitatibus nisi itaque
-        similique numquam expedita consequatur modi aliquid nemo reprehenderit
-        facere consectetur. Deleniti iste a earum neque quas minus quam amet
-        tenetur voluptate.
-      </Text>
-    ),
+    component: () => <PropertyItem isSlider={true} />,
     props: {},
   },
   {
