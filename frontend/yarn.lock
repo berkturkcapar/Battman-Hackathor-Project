@@ -1876,6 +1876,11 @@
     "@urql/core" ">=2.3.1"
     wonka "^4.0.14"
 
+"@use-expo/brightness@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@use-expo/brightness/-/brightness-2.0.0.tgz#bdafdf590acb7c65736af6758621986992b170f9"
+  integrity sha512-wzYP2x4K4d7sk2ugi44kJa6w05aDoh7uQlgbI7Ah+1evlKEq4emqnrI2KHk6/ILudzmzomzZYjjX/eszmXLPBA==
+
 "@xmldom/xmldom@~0.7.0":
   version "0.7.9"
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.9.tgz#7f9278a50e737920e21b297b8a35286e9942c056"
@@ -3051,6 +3056,11 @@ expo-asset@~8.6.2:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
+expo-brightness@~11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/expo-brightness/-/expo-brightness-11.0.1.tgz#789b7a1fbbee856144a0387b7af4dcb3d1952ba6"
+  integrity sha512-t5SJzYQLCawXK3UOollQuyNiVs6h05EhNQwfD2HGMtidroyoD70yN/t0v+svZ3wjzlKRWHnOOT/rdlU5PGSrJg==
+
 expo-constants@~14.0.0, expo-constants@~14.0.2:
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-14.0.2.tgz#2cb1dec8f41a64c2fc5b4eecaf77d7661cad01cc"
@@ -3058,6 +3068,13 @@ expo-constants@~14.0.0, expo-constants@~14.0.2:
   dependencies:
     "@expo/config" "~7.0.2"
     uuid "^3.3.2"
+
+expo-device@~5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/expo-device/-/expo-device-5.0.0.tgz#2039e01a9d8bc696c060771145b764758e3ed242"
+  integrity sha512-FWlbOUMzAjHojLER8fnS42vLT7aqZ7IoEY+nw/RqmW17SA3GE2lzcYxRYZs1vAIgDnLzcS5CQMp08Eu+EXih1g==
+  dependencies:
+    ua-parser-js "^0.7.19"
 
 expo-error-recovery@~4.0.1:
   version "4.0.1"
@@ -3101,6 +3118,11 @@ expo-modules-core@1.0.3:
   dependencies:
     compare-versions "^3.4.0"
     invariant "^2.2.4"
+
+expo-network@~5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/expo-network/-/expo-network-5.0.0.tgz#688d00a7ed2e2d00c43e464aa42a33bae0554e47"
+  integrity sha512-t1pzOdPDBfuMI8SN15IJy+5b6o76YQyvsvBvsuhVp5S02TjFHHygzGekGwbmVYPjMfc8AfQm/8ggGCqlGz2u6g==
 
 expo-splash-screen@~0.17.5:
   version "0.17.5"
@@ -6397,7 +6419,7 @@ type-is@~1.6.17:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-ua-parser-js@^0.7.30:
+ua-parser-js@^0.7.19, ua-parser-js@^0.7.30:
   version "0.7.32"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.32.tgz#cd8c639cdca949e30fa68c44b7813ef13e36d211"
   integrity sha512-f9BESNVhzlhEFf2CHMSj40NWOjYPl1YKYbrvIr/hFTDEmLq7SRbWvm7FcdcpCYT95zrOhC7gZSxjdnnTpBcwVw==
