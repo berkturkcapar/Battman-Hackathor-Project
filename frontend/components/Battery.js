@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-//import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import { View, StyleSheet, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function getPercentageColor(percentage) {
   if (percentage >= 80) {
@@ -15,12 +15,15 @@ function getPercentageColor(percentage) {
     return 'red';
   }
 }
-//const BoltIcon = () => {
-//  return <Icon name={'bolt'} />;
-//};
-const Battery = ({ percentage }) => {
+
+const BoltIcon = () => {
+  return <Icon name={'bolt'} size={30}/>;
+};
+
+const Battery = ({ percentage,isCharged }) => {
   let cnt = Math.floor(percentage / 20);
   cnt = cnt === 0 ? 1 : cnt;
+  console.log(cnt,'cnt')
   const arr = Array(cnt).fill(
     <View
       style={{
@@ -33,13 +36,16 @@ const Battery = ({ percentage }) => {
       }}
     />
   );
+  console.log(isCharged, "is Charge")
   return (
+    <>
     <View
       style={{
         flexDirection: 'row',
         height: 100,
         justifyContent: 'center',
-        marginVertical: 20,
+        marginTop: 20,
+        marginBottom: 15
       }}
     >
       <View
@@ -52,9 +58,15 @@ const Battery = ({ percentage }) => {
           flexDirection: 'row',
           alignItems: 'center',
           paddingHorizontal: 2,
+          position: 'relative'
         }}
       >
         {arr.map((item) => item)}
+        {
+          isCharged !== "Not Charging" &&   ( <View style={{position: 'absolute', left: '50%'}}>
+          <Icon name='bolt' size={50} color={'white'} />
+        </View>)
+        }
       </View>
       <View style={{ alignItems: 'center', flexDirection: 'row' }}>
         <View
@@ -67,6 +79,20 @@ const Battery = ({ percentage }) => {
         ></View>
       </View>
     </View>
+    <View style={{
+      justifyContent: 'center',
+      flexDirection: 'row',
+      paddingBottom: 10,
+    }}>
+      <Text style={{
+          color: 'white',
+          fontFamily: 'Inter-Bold',
+          fontSize: 20,
+          }}>
+        Battery Percentage: { percentage }%
+      </Text>
+    </View>
+    </>
   );
 };
 
