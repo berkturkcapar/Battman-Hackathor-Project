@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 import * as Device from 'expo-device';
 import * as BatteryExpo from 'expo-battery';
 import { useFonts } from 'expo-font';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const batteryCapacities = [
   {
     name: 'iPhone 11',
@@ -30,14 +32,17 @@ const dischargeRates = [
   {
     action: 'Video Playback',
     rate: 138,
+    icon: 'youtube-play'
   },
   {
     action: 'Video Playback (Streaming)',
     rate: 160,
+    icon: 'video-camera'
   },
   {
     action: 'Audio Playback',
     rate: 41,
+    icon: 'music'
   },
 ];
 
@@ -73,6 +78,7 @@ const RunTimeCalculator = () => {
     ? dischargeRates.map((rate) => (
         <View
           style={{
+            flexDirection: 'row',
             width: '100%',
             borderRadius: 20,
             padding: 20,
@@ -80,7 +86,15 @@ const RunTimeCalculator = () => {
             marginVertical: 10,
           }}
         >
-          <Text style={{ color: '#fff' }}>{`${rate.action}: ${Math.floor(
+          <Icon 
+            name={rate.icon} 
+            size={18} 
+            color={'white'} 
+            style={{
+              marginRight: 10, 
+              lineHeight: 25
+            }}/>
+          <Text style={{ color: '#fff', lineHeight: 25 }}>{`${rate.action}: ${Math.floor(
             (model?.capacity / rate.rate) * bLevel
           )} hours`}</Text>
         </View>

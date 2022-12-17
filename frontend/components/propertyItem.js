@@ -163,7 +163,9 @@ const PropertyItem = (props) => {
               padding: 10,
             }}
           >
-            {<Text style={styles.descStyle}>{lorem}</Text>}
+            {<Text style={styles.descStyle}>
+              For optimal battery usage on your iPhone device, brightness should be kept minimal. You can dim the brightness from this slider
+              </Text>}
             <Slider
               value={brightness}
               onValueChange={setBrightness}
