@@ -1,48 +1,50 @@
-import { FlatList, View, Text, StyleSheet } from "react-native"
-import Battery from "../components/Battery";
-import PropertyItem from "../components/propertyItem"
+import { FlatList, View, Text, StyleSheet } from 'react-native';
+import Battery from '../components/Battery';
+import PropertyItem from '../components/propertyItem';
 
 const TYPES = [
   {
     id: 1,
-    type: "brightness",
+    type: 'brightness',
   },
   {
     id: 2,
-    type: "network",
+    type: 'network',
   },
   {
     id: 3,
-    type: "version",
+    type: 'version',
   },
   {
     id: 4,
-    type: "cellular"
-  }
+    type: 'cellular',
+  },
+  {
+    id: 5,
+    type: 'weather',
+  },
 ];
 
-const renderItem = ({ item }) => (
-  <PropertyItem type={item.type}/>
-);
+const renderItem = ({ item }) => <PropertyItem type={item.type} />;
 
 const MainPage = () => {
-  return(
-    <View style={{flex: 1}}>
-      <Battery percentage={75}/>
-      <FlatList 
+  return (
+    <View style={{ flex: 1 }}>
+      <Battery percentage={75} />
+      <FlatList
         data={TYPES}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         style={styles.list}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   list: {
-    marginTop: 0
-  }
+    marginTop: 0,
+  },
 });
 
 export default MainPage;
