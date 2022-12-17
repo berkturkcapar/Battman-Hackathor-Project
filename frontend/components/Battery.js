@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+//import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 function getPercentageColor(percentage) {
   if (percentage >= 80) {
@@ -15,9 +15,9 @@ function getPercentageColor(percentage) {
     return 'red';
   }
 }
-const BoltIcon = () => {
-  return <Icon name={'bolt'} />;
-};
+//const BoltIcon = () => {
+//  return <Icon name={'bolt'} />;
+//};
 const Battery = ({ percentage }) => {
   let cnt = Math.floor(percentage / 20);
   cnt = cnt === 0 ? 1 : cnt;
