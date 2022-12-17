@@ -52,7 +52,6 @@ const MainPage = () => {
 
   useEffect(() => {
     const subscription = BatteryExpo.addBatteryStateListener((bState) => {
-      console.log("bstate: ", bState)
       if (bState.batteryState == 1) {
         setisBatteryCharging('Not Charging');
       } else if (bState.batteryState == 2) {
@@ -67,7 +66,6 @@ const MainPage = () => {
   }, []);
   useEffect(() => {
     const subscription = BatteryExpo.addLowPowerModeListener((e) => {
-      console.log("lowpoer: ", e)
       setIsLowPower(e.lowPowerMode);
     });
     return () => {
@@ -76,7 +74,6 @@ const MainPage = () => {
   }, []);
   const asyncFunc = async () => {
     const batteryState = await BatteryExpo.getPowerStateAsync();
-    console.log(batteryState);
     handleBatteryState(batteryState);
   };
   useState(() => asyncFunc(), []);

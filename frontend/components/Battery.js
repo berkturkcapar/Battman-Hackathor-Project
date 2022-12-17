@@ -93,7 +93,7 @@ const Battery = ({ percentage,isCharged, isLowPower }) => {
       </Text>
       <Text style={{
         color: 'orange',
-        fontFamily: 'Inter-bold',
+        fontFamily: 'Inter-Bold',
         fontSize: 16,
         textAlign: 'center'
       }}>
