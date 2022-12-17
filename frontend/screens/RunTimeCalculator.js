@@ -11,6 +11,10 @@ const batteryCapacities = [
     capacity: 3110,
   },
   {
+    name: 'iPhone 12',
+    capacity: 2815,
+  },
+  {
     name: 'iPhone SE',
     capacity: 2018,
   },
@@ -75,7 +79,19 @@ const RunTimeCalculator = () => {
   });
 
   return fontsLoaded
-    ? dischargeRates.map((rate) => (
+    ? (
+      <>
+      <Text style={{
+          color: "white",
+            fontSize: 30,
+            fontFamily: "Inter-Bold",
+            marginBottom: 10,
+            textAlign: "center",
+            marginVertical: 20
+        }}>
+          Runtime Statistics
+        </Text>
+      {dischargeRates.map((rate) => (
         <View
           style={{
             flexDirection: 'row',
@@ -98,7 +114,9 @@ const RunTimeCalculator = () => {
             (model?.capacity / rate.rate) * bLevel
           )} hours`}</Text>
         </View>
-      ))
+      ))}
+      </>
+    )
     : null;
 };
 const styles = StyleSheet.create({

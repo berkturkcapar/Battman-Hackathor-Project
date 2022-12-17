@@ -16,16 +16,6 @@ const routes = [
     props: {},
   },
   {
-    name: 'Preferences',
-    component: () => <Preferences />,
-    props: {},
-  },
-  {
-    name: 'Add Preference',
-    component: () => <AddPreferences />,
-    props: {},
-  },
-  {
     name: 'Runtime Calculator',
     component: () => <RunTimeCalculator />,
     props: {},

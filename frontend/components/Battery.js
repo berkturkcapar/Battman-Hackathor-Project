@@ -20,7 +20,7 @@ const BoltIcon = () => {
   return <Icon name={'bolt'} size={30}/>;
 };
 
-const Battery = ({ percentage,isCharged }) => {
+const Battery = ({ percentage,isCharged, isLowPower }) => {
   let cnt = Math.floor(percentage / 20);
   cnt = cnt === 0 ? 1 : cnt;
   console.log(cnt,'cnt')
@@ -81,7 +81,7 @@ const Battery = ({ percentage,isCharged }) => {
     </View>
     <View style={{
       justifyContent: 'center',
-      flexDirection: 'row',
+      alignItems: "center",
       paddingBottom: 10,
     }}>
       <Text style={{
@@ -90,6 +90,22 @@ const Battery = ({ percentage,isCharged }) => {
           fontSize: 20,
           }}>
         Battery Percentage: { percentage }%
+      </Text>
+      <Text style={{
+        color: 'orange',
+        fontFamily: 'Inter-bold',
+        fontSize: 16,
+        textAlign: 'center'
+      }}>
+        {isLowPower ? 'Low Power Mode is on' : 'Low Power mode is off'}
+      </Text>
+      <Text style={{
+        color: '#d4d5d6',
+        fontFamily: 'Inter-Light',
+        fontSize: 16,
+        textAlign: 'center'
+      }}>
+        It is most beneficial for you to keep your battery level between 20% and 80%
       </Text>
     </View>
     </>

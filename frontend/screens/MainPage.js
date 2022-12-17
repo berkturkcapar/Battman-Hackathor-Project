@@ -65,6 +65,15 @@ const MainPage = () => {
       subscription.remove();
     };
   }, []);
+  useEffect(() => {
+    const subscription = BatteryExpo.addLowPowerModeListener((e) => {
+      console.log("lowpoer: ", e)
+      setIsLowPower(e.lowPowerMode);
+    });
+    return () => {
+      subscription.remove();
+    };
+  }, []);
   const asyncFunc = async () => {
     const batteryState = await BatteryExpo.getPowerStateAsync();
     console.log(batteryState);
@@ -73,7 +82,7 @@ const MainPage = () => {
   useState(() => asyncFunc(), []);
   return (
     <View style={{ flex: 1 }}>
-      <Battery percentage={batteryLevel} isCharged={isBatteryCharging} />
+      <Battery percentage={batteryLevel} isCharged={isBatteryCharging} isLowPower={isLowPower}/>
       <FlatList
         data={TYPES}
         renderItem={renderItem}
