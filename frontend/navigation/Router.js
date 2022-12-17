@@ -1,26 +1,27 @@
-import React from 'react';
-import { Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import 'react-native-gesture-handler';
-import PropertyItem from '../components/propertyItem';
-import MainPage from '../screens/MainPage';
+import React from "react";
+import { Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import "react-native-gesture-handler";
+import PropertyItem from "../components/propertyItem";
+import MainPage from "../screens/MainPage";
+import AddPreferences from "../screens/AddPreferences";
+import Preferences from "../screens/Preferences";
 
 const routes = [
   {
-    name: 'Home',
-    component: () => <MainPage/>,
+    name: "Home",
+    component: () => <MainPage />,
     props: {},
   },
   {
-    name: 'Battery',
-    component: () => (
-      <Text>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae modi
-        eaque voluptates id ullam aspernatur deserunt atque officia, illo
-        cumque?
-      </Text>
-    ),
+    name: "Preferences",
+    component: () => <Preferences />,
+    props: {},
+  },
+  {
+    name: "Add Preference",
+    component: () => <AddPreferences />,
     props: {},
   },
 ];
@@ -37,23 +38,23 @@ export default function Router() {
             name={route.name}
             component={route.component}
             options={{
-              drawerActiveBackgroundColor: '#555',
-              drawerActiveTintColor: '#0f0',
+              drawerActiveBackgroundColor: "#555",
+              drawerActiveTintColor: "#0f0",
               drawerContentStyle: {
-                backgroundColor: '#000',
+                backgroundColor: "#000",
               },
               drawerLabelStyle: {
                 fontSize: 20,
               },
-              drawerInactiveTintColor: '#fff',
-              drawerType: 'slide',
-              drawerStatusBarAnimation: 'slide',
+              drawerInactiveTintColor: "#fff",
+              drawerType: "slide",
+              drawerStatusBarAnimation: "slide",
               headerStyle: {
-                backgroundColor: '#000',
+                backgroundColor: "#000",
               },
-              headerTintColor: '#fff',
+              headerTintColor: "#fff",
               sceneContainerStyle: {
-                backgroundColor: '#000',
+                backgroundColor: "#000",
               },
               headerTitle: () => null,
             }}
