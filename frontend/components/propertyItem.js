@@ -130,7 +130,7 @@ const PropertyItem = (props) => {
       return;
     }
     let location = await Location.getCurrentPositionAsync({});
-    handleLocation(location);
+    //handleLocation(location);
   };
   useEffect(() => {
     getDetails();
