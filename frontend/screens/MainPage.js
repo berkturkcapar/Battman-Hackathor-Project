@@ -1,4 +1,5 @@
 import { FlatList, View, Text, StyleSheet } from "react-native"
+import Battery from "../components/Battery";
 import PropertyItem from "../components/propertyItem"
 
 const TYPES = [
@@ -26,7 +27,8 @@ const renderItem = ({ item }) => (
 
 const MainPage = () => {
   return(
-    <View>
+    <View style={{flex: 1}}>
+      <Battery percentage={75}/>
       <FlatList 
         data={TYPES}
         renderItem={renderItem}
@@ -39,7 +41,7 @@ const MainPage = () => {
 
 const styles = StyleSheet.create({
   list: {
-    marginTop: 10
+    marginTop: 0
   }
 });
 
