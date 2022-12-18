@@ -130,7 +130,7 @@ const PropertyItem = (props) => {
       return;
     }
     let location = await Location.getCurrentPositionAsync({});
-    //handleLocation(location);
+    handleLocation(location);
   };
   useEffect(() => {
     getDetails();
@@ -267,7 +267,7 @@ const PropertyItem = (props) => {
             </Text>
             {!isLatest ? (
               <Pressable onPress={() => Linking.openSettings()}>
-                <Text style={styles.goToSettingsText}>{'Go To Settings!'}</Text>
+                <Text style={styles.goToSettingsText}>{'Go To Settings'}</Text>
               </Pressable>
             ) : null}
           </View>
@@ -351,7 +351,7 @@ const PropertyItem = (props) => {
                   : styles.headerStyleCold
               }
             >
-              {`Weather outside  is ${weather}`}
+              {`Weather outside is ${weather}`}
             </Text>
           </View>
           <View

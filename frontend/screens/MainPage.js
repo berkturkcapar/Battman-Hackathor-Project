@@ -3,6 +3,9 @@ import { FlatList, View, Text, StyleSheet } from 'react-native';
 import Battery from '../components/Battery';
 import PropertyItem from '../components/propertyItem';
 import * as BatteryExpo from 'expo-battery';
+import * as Notification from "expo-notifications";
+import * as Permissions from "expo-permissions";
+import { USER_FACING_NOTIFICATIONS } from "expo-permissions";
 
 const TYPES = [
   {
@@ -30,6 +33,70 @@ const TYPES = [
 const renderItem = ({ item }) => <PropertyItem type={item.type} />;
 
 const MainPage = () => {
+
+  //Exectute at the launch of app for ios
+  useEffect(() => {
+    Permissions.getAsync(Permissions.NOTIFICATIONS)
+      .then((statusObj) => {
+        if (statusObj.status !== "granted") {
+          return Permissions.askAsync(Permissions.NOTIFICATIONS);
+        }
+        return statusObj;
+      })
+      .then((statusObj) => {
+        if (statusObj.status !== "granted") {
+          alert("Notifications will be unavailable now");
+          return;
+        }
+      });
+  }, []);
+
+  useEffect(() => {
+    //When app is closed
+    const backgroundSubscription =
+      Notification.addNotificationResponseReceivedListener((response) => {
+        // console.log(response);
+      });
+    //When the app is open
+    const foregroundSubscription = Notification.addNotificationReceivedListener(
+      (notification) => {
+        // console.log(notification);
+      }
+    );
+
+    return () => {
+      backgroundSubscription.remove();
+      foregroundSubscription.remove();
+    };
+  }, []);
+  //=======================================================
+
+  //Trigger Function Called by click of the button to
+  //trigger notification
+
+  //=======================================================
+  const triggerNotification = ( batteryLevel ) => {
+    // console.log("battery level", batteryLevel);
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Battery Alert ⚠️",
+        body: batteryLevel <= 20 ? 
+        ("Charge your phone! Your charge should not go below 20% for long-lasting battery life") 
+        : ("Don't overcharge your phone! Your charge should not go above 80% for long-lasting battery life"),
+      },
+      trigger: {
+        seconds: 2,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (batteryLevel && (batteryLevel <= 20 || batteryLevel >= 80)) {
+      triggerNotification(batteryLevel);
+    }
+  }, [batteryLevel])
+  
+
   const [isBatteryCharging, setisBatteryCharging] = useState('');
   const [batteryLevel, setBatteryLevel] = useState(0);
   const [isLowPower, setIsLowPower] = useState(false);
@@ -41,7 +108,7 @@ const MainPage = () => {
     } else {
       setisBatteryCharging('Fully Charged');
     }
-    const bLevel = Math.floor(bState.batteryLevel * 100);
+    const bLevel = Math.ceil(bState.batteryLevel * 100);
     if (bLevel <= 0) {
       setBatteryLevel(20);
     } else {
@@ -72,6 +139,19 @@ const MainPage = () => {
       subscription.remove();
     };
   }, []);
+  useEffect(() => {
+    const subscription = BatteryExpo.addBatteryLevelListener((bState) => {
+      const bLevel = Math.ceil(bState.batteryLevel * 100);
+      if (bLevel <= 0) {
+        setBatteryLevel(20);
+      } else {
+        setBatteryLevel(bLevel);
+      }
+    });
+    return () => {
+      subscription.remove();
+    };
+  }, [batteryLevel]);
   const asyncFunc = async () => {
     const batteryState = await BatteryExpo.getPowerStateAsync();
     handleBatteryState(batteryState);

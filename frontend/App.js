@@ -5,6 +5,9 @@ import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import Router from './navigation/Router';
+import * as Notification from "expo-notifications";
+import * as Permissions from "expo-permissions";
+import { USER_FACING_NOTIFICATIONS } from "expo-permissions";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,6 +25,16 @@ export default function App() {
   });
 
   //fontsLoaded = true;
+
+  Notification.setNotificationHandler({
+    handleNotification: async () => {
+      return {
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: true,
+      };
+    },
+  });
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {

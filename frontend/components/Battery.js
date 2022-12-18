@@ -23,7 +23,7 @@ const BoltIcon = () => {
 const Battery = ({ percentage,isCharged, isLowPower }) => {
   let cnt = Math.floor(percentage / 20);
   cnt = cnt === 0 ? 1 : cnt;
-  console.log(cnt,'cnt')
+  // console.log(cnt,'cnt')
   const arr = Array(cnt).fill(
     <View
       style={{
@@ -36,7 +36,7 @@ const Battery = ({ percentage,isCharged, isLowPower }) => {
       }}
     />
   );
-  console.log(isCharged, "is Charge")
+  // console.log(isCharged, "is Charge")
   return (
     <>
     <View
